@@ -1,51 +1,118 @@
-let promociones = prompt ("combos disponibles 1-nueces, almendas y coco $60 2- nueces, almendas, coco y pistachos $100 3-mix tropical, mix energetico y mix summer $80 4-tomates disecados, durazno en orejones y pasas de uvas $120 5- Salir")
-let total = 0
-let cantidad = 0
-const calcular = (combo,cantidad) => {
-    let resultado = combo * cantidad
-    console.log ("Acaba de comprar " + cantidad + " " + "combos de " + combo + " por un total de " + resultado)
-    return resultado
+// constantes a utilizar
+const opcion_salir = 4;
+const ArrayProductos = []
+
+//productos
+
+class Producto {
+    constructor (nombre, precio,categoria, cantidad ){
+    // this.codigo
+    this.nombre = nombre;
+    this.precio = precio;
+    this.categoria = categoria;
+    this.cantidad = cantidad;
+    }
 }
 
-while (promociones != "5"){
+// creamos los productos y los incorporamos al array
+const incorporarProductos = () => {
+const nueces = new Producto ("Nueces", 1850, "Frutos Secos", "por 1kg" )
+ArrayProductos.push (nueces)
 
-    switch (promociones){
+const almendras = new Producto ("Almendras", 4800, "Frutos Secos", "por 1kg" )
+ArrayProductos.push (almendras)
 
-        case "1":
-            let combo1 = 60
-            cantidad = prompt ("ingrese la cantidad que desea comprar")
-            total = total + calcular (combo1, cantidad)
-            console.log("$" + combo1 + " " + "x" +" "+ cantidad + " " + "=" + " " + "$" + total)
+const pistachos = new Producto ("Pistachos", 4950, "Frutos Secos", "por 1kg")
+ArrayProductos.push (nueces)
+
+const anana = new Producto ("Anana", 1500, "Frutas Abrillantadas", "por 1kg")
+ArrayProductos.push (anana)
+
+const ciruelas = new Producto ("Ciruelas", 1700, "Frutas Abrillantadas", "por 1kg")
+ArrayProductos.push (ciruelas)
+
+const duraznos = new Producto ("duraznos", 2100, "Frutas Abrillantadas", "por 1kg")
+ArrayProductos.push (duraznos)
+
+
+const oregano = new Producto ("Oregano", 600, "Condimentos", "por 500g")
+ArrayProductos.push (oregano)
+
+const ajiMolido = new Producto ("Aji Molido", 600, "Condimentos", "por 500g")
+ArrayProductos.push (ajiMolido)
+
+const ajoEnPolvo = new Producto ("Ajo En Polvo", 600, "Condimentos", "por 500g")
+ArrayProductos.push (ajoEnPolvo)
+}
+
+incorporarProductos();
+
+
+
+
+// Creamos las categorias a utilizar
+
+const verProductos = () => {
+    let opciones;
+    opciones = parseInt(prompt ("Elige el producto que desea \n 1-Futos secos \n 2- Fruntas abrillantadas \n 3-Condimentos \n 4- Volver al menu anterior"))
+    while (opciones != opcion_salir){
+
+        switch (opciones){
+    
+            case 1:
+                verFrutosSecos()
+                break
+    
+    
+            case 2:
+                verFrutasAbrillantadas()
+                break
+    
+            case 3:
+                verCondimentos()
+                break
+    
+            case 4:
+                break
+    
+                default: alert("La opcion no es valida")
+    
+        }
+        opciones = parseInt(prompt ("Elige el producto que desea \n 1-Nueces \n 2- Almendras \n 3-Pistachos \n 4- Volver al menu anterior"))
+}
+}
+
+// Creamos el menu principal
+
+let opciones = prompt ("Elige la opcion que desea \n 1-productos \n 2- Combos disponibles \n 3-Carrito de compras \n 4- Salir")
+
+while (opciones != opcion_salir){
+
+    switch (opciones){
+
+        case 1:
+            verProductos()
             break
 
 
-        case "2":
-            let combo2 = 100
-            cantidad = prompt ("ingrese la cantidad que desea comprar")
-            total = total + calcular(combo2, cantidad)
-            console.log("$" + combo2 + " " + "x" +" "+ cantidad + " " + "=" + " " + "$" + total)
+        case 2:
+            verPromociones()
             break
 
-        case "3":
-            let combo3 = 80
-            cantidad = prompt ("ingrese la cantidad que desea comprar")
-            total = total + calcular(combo3, cantidad)
-            console.log("$" + combo3 + " " + "x" +" "+ cantidad + " " + "=" + " " + "$" + total)
+        case 3:
+            verCarrito()
             break
 
-        case "4":
-            let combo4 = 120
-            cantidad = prompt ("ingrese la cantidad que desea comprar")
-            total = total + calcular (combo4, cantidad)
-            console.log("$" + combo4 + " " + "x" +" "+ cantidad + " " + "=" + " " + "$" + total)
+        case 4:
             break
 
-            default: alert("no es una opcion valida")
+            default: alert("Muchas gracias, lo esperamos pronto")
 
     }
 
-    promociones = prompt ("combos disponibles 1-nueces, almendas y coco $60 2- nueces, almendas, coco y pistachos $100 3-mix tropical, mix energetico y mix summer $80 4-tomates disecados, durazno en orejones y pasas de uvas $120 5- Salir")
+    opciones = parseInt(prompt ("Elige la opcion que desea \n 1-productos \n 2- Combos disponibles \n 3-Carrito de compras \n 4- Salir"))
 
 }
 
 alert ("gracias por su compra, lo esperamos pronto")
+
